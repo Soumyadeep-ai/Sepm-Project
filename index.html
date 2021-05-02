@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="197630900463-vvkhqmq1cf5h44tjupf8h0rr11u12q41.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <title>Tohfa.</title>
+    <link rel="icon" href="assets/logo/android-chrome-512x512.png" sizes="16x16 32x32" type="image/jpg">
+    <link rel="stylesheet" href="login.css">
+
+    <style type="text/css">
+        #btn{
+            left: 0;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="hero">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn">Log In</button>
+                <button type="button" class="toggle-btn"><a href="register.html">Register</a></button>
+            </div>
+            <div class="social-icons">
+
+            <div class="g-signin2 google" data-width="220" data-height="44" data-longtitle="true" data-theme ="light">
+            </div>
+        </div>
+            <form id="login" class="input-group" action="/login" method="POST">
+                <input type="email" class="input-field" placeholder="Email Id" required>
+                <input type="text" class="input-field" placeholder="Enter Password" required>
+                <input type="checkbox" class="check-box"><span>Remember Password</span>
+                <button type="submit" class="submit-btn"><a href="landing.html">Login</a></button>
+                
+            </form>
+            
+        </div>
+        
+    </div>
+    <script>
+        function onSuccess(googleUser) {
+          console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+        }
+        function onFailure(error) {
+          console.log(error);
+        }
+        function renderButton() {
+          gapi.signin2.render('my-signin2', {
+            'scope': 'profile email',
+            'width': 200,
+            'height': 50,
+            'longtitle': true,
+            'theme': 'dark',
+            'onsuccess': onSuccess,
+            'onfailure': onFailure
+          });
+        }
+      </script>
+      <script src="https://apis.google.com/js/platform.js?onload=renderButton"></script>
+</body>
+</html>
